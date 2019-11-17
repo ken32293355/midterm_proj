@@ -95,7 +95,7 @@ void SobelFilter::do_filter()
 		}
 
 		// read new rows
-		for (int x = 0; x < xlen; x++)
+		for (int x = 0; x < 256; x++)
 		{
 
 #ifndef NATIVE_SYSTEMC
@@ -120,7 +120,7 @@ void SobelFilter::do_filter()
 			{
 				for (int u = -xBound; u != xBound + adjustX; ++u)
 				{
-					if (x + u >= 0 && x + u < xlen && y + v >= 0 && y + v < 3)
+					if (x + u >= 0 && x + u < 256 && y + v >= 0 && y + v < 3)
 					{
 						newR += batch_r[v + y][x + u] * embossFilterMask[v + yBound][u + xBound];
 						newB += batch_g[v + y][x + u] * embossFilterMask[v + yBound][u + xBound];
@@ -187,14 +187,14 @@ void SobelFilter::do_filter()
 		o_newG.write(newG);
 		o_newB.write(newB);
 #endif
-	}
-	for (int y = 1; y < 3; y++)
-	{
-		for (int x = 0; x < 256; x++)
+		for (int y = 1; y < 3; y++)
 		{
-			batch_r[y - 1][x] = batch_r[y][x];
-			batch_g[y - 1][x] = batch_g[y][x];
-			batch_b[y - 1][x] = batch_b[y][x];
+			for (int x = 0; x < 256; x++)
+			{
+				batch_r[y - 1][x] = batch_r[y][x];
+				batch_g[y - 1][x] = batch_g[y][x];
+				batch_b[y - 1][x] = batch_b[y][x];
+			}
 		}
 	}
 }
