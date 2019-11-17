@@ -146,6 +146,7 @@ void Testbench::feed_rgb() {
 	total_start_time = sc_time_stamp();
   for (y = 0; y != height; ++y) {
     for (x = 0; x != 256; ++x) {
+      printf("load y %d x%d\n", y, x);
       R = *(source_bitmap +
             bytes_per_pixel * (width * y + x) + 2);
       G = *(source_bitmap +
