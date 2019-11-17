@@ -37,10 +37,11 @@ const sc_int<8> embossFilterMask[MASK_X][MASK_Y] =
 		0, 1, 1};
 
 const sc_int<8> sharpenFilterMask[MASK_X][MASK_Y] =
-	{
-		-1, -1, 0,
-		-1, 0, 1,
-		0, 1, 1};
+{
+		1, 1, 1,
+		1, -7, 1,
+		1, 1, 1
+};
 
 void SobelFilter::do_filter()
 {
