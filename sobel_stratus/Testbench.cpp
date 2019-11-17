@@ -178,8 +178,9 @@ void Testbench::fetch_result() {
 #endif
 	wait(5);
 	wait(1);
-  for (y = 0; y != height; ++y) {
+  for (y = 0; y < height-1; ++y) {
     for (x = 0; x != 256; ++x) {
+      printf("read y %d x %d\n", y, x);
 #ifndef NATIVE_SYSTEMC
 			newR = i_newR.get();
 			newG = i_newG.get();
