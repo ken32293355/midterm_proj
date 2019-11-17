@@ -121,7 +121,7 @@ int Testbench::write_bmp(string outfile_name) {
 
   // write image
   fwrite(target_bitmap, sizeof(unsigned char),
-         (size_t)(long)width * height * bytes_per_pixel, fp_t);
+         (size_t)(long)width * (height-3) * bytes_per_pixel, fp_t);
 
   fclose(fp_t);
   return 0;
@@ -176,10 +176,9 @@ void Testbench::fetch_result() {
 	i_newG.reset();
 	i_newB.reset();
 #endif
-	wait(5);
-	wait(1);
+	wait(20);
   // for (y = 0; y < height-3; ++y) {
-  for (y = 0; y < 200; ++y) {
+  for (y = 0; y < height -3; ++y) {
       printf("fetch %d\n",y);
     for (x = 0; x != 256; ++x) {
 
@@ -193,7 +192,6 @@ void Testbench::fetch_result() {
 			newG = i_newG.read();
 			newB = i_newB.read();
 #endif
-
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
