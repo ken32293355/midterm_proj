@@ -106,7 +106,7 @@ void SobelFilter::do_filter()
 			batch_g[2][x] = rgb.range(15, 8);
 			batch_b[2][x] = rgb.range(23, 16);
 		}
-		printf("read %d row\n", cnt++);
+		// printf("read %d row\n", cnt++);
 
 		for (int x = 0; x < 256; x++)
 		{
