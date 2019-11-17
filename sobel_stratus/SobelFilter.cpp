@@ -45,7 +45,7 @@ const sc_int<8> sharpenFilterMask[MASK_X][MASK_Y] =
 void SobelFilter::do_filter()
 {
 	int newR, newG, newB;
-	int bias = 128;
+	int bias = 0;
 	sc_uint<8> batch_r[3][256];
 	sc_uint<8> batch_g[3][256];
 	sc_uint<8> batch_b[3][256];
@@ -117,9 +117,9 @@ void SobelFilter::do_filter()
 				{
 					if (x + u >= 0 && x + u < 256 && y + v >= 0 && y + v < 3)
 					{
-						newR += batch_r[v + y][x + u] * embossFilterMask[v + yBound][u + xBound];
-						newB += batch_g[v + y][x + u] * embossFilterMask[v + yBound][u + xBound];
-						newB += batch_b[v + y][x + u] * embossFilterMask[v + yBound][u + xBound];
+						newR += batch_r[v + y][x + u] * sharpenFilterMask[v + yBound][u + xBound];
+						newB += batch_g[v + y][x + u] * sharpenFilterMask[v + yBound][u + xBound];
+						newB += batch_b[v + y][x + u] * sharpenFilterMask[v + yBound][u + xBound];
 					}
 				}
 
