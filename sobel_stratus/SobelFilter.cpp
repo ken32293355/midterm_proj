@@ -50,7 +50,7 @@ void SobelFilter::do_filter()
 	sc_uint<8> batch_g[3][256];
 	sc_uint<8> batch_b[3][256];
 	sc_dt::sc_uint<24> rgb;
-	int cnt = 0;
+	int cnt = 2;
 	{
 #ifndef NATIVE_SYSTEMC
 		HLS_DEFINE_PROTOCOL("main_reset");
@@ -79,6 +79,7 @@ void SobelFilter::do_filter()
 			batch_b[y][x] = rgb.range(23, 16);
 		}
 	}
+	printf("raed two rows\n");
 	// boundary condition
 	const int adjustX = (MASK_X % 2) ? 1 : 0;
 	const int adjustY = (MASK_Y % 2) ? 1 : 0;
@@ -96,6 +97,8 @@ void SobelFilter::do_filter()
 		// read new rows
 		for (int x = 0; x < 256; x++)
 		{
+			printf("read %d row\n", cnt++);
+
 #ifndef NATIVE_SYSTEMC
 			{
 				rgb = i_rgb.get();
