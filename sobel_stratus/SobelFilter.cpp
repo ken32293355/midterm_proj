@@ -97,7 +97,6 @@ void SobelFilter::do_filter()
 		// read new rows
 		for (int x = 0; x < 256; x++)
 		{
-			printf("read %d row\n", cnt++);
 
 #ifndef NATIVE_SYSTEMC
 			{
@@ -111,6 +110,7 @@ void SobelFilter::do_filter()
 			batch_g[2][x] = rgb.range(15, 8);
 			batch_b[2][x] = rgb.range(23, 16);
 		}
+		printf("read %d row\n", cnt++);
 
 		// calculate a batch of new row
 		for (int x = 0; x < 256; x++)
