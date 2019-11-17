@@ -1,0 +1,12 @@
+23959
+23976
+ic58.cs.nthu.edu.tw
+bdw_work/trace/hls.SobelFilter.BASIC.s.trace
+2
+0
+0
+0
+1573917284
+1573917338
+/tools/linux/cadence/STRATUS/cur/bin/stratus_hls --logfile=stratus_hls.log -I. -Ibdw_work/wrappers -I/tools/linux/cadence/STRATUS/cur/share/stratus/include --tl=/tools/linux/cadence/STRATUS/cur/share/stratus/techlibs/GPDK045/gsclib045_svt_v4.4/gsclib045/timing/slow_vdd1v2_basicCells.lib --clock_period=10.000 --message_detail=3 -DBASIC=1 -DBDW_RTL_SobelFilter_BASIC=1 -d bdw_work/modules/SobelFilter/BASIC -o SobelFilter_rtl.cpp --hls_module=SobelFilter --hls_config=BASIC --project=project.tcl ../SobelFilter.cpp
+

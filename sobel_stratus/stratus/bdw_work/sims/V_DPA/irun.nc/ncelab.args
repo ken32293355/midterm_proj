@@ -1,0 +1,34 @@
+//
+// File created by:  irun
+// Do not modify this file
+//
++hubSetOption+libdef=bdw_work/sims/V_DPA/sim_V_DPA.so,argv=../lena_std_short.bmp%out.bmp
++hubSetOption+bdr=bdw_work/sims/V_DPA/sim.bdr
++nc64bit
++incdir+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/lib
++incdir+bdw_work/wrappers
++access+rw
++loadpli1=/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/lib/64bit/ncvlog_ssl:ssl_bootstrap
++ncinput+bdw_work/sims/V_DPA/ncverilog.do
++nclibdirname+bdw_work/sims/V_DPA
++libext+.v
++define+ioConfig
++define+BDW_RTL_SobelFilter_DPA
++nowarn+LIBNOU
+-ACCESS
++rw
+-LOADPLI1
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/lib/64bit/ncvlog_ssl:ssl_bootstrap
+-NOWARN
+LIBNOU
+-MESSAGES
+-XLMODE
+bdw_work/sims/V_DPA/irun.lnx8664.14.10.nc
+-RUNMODE
+-CDSLIB
+bdw_work/sims/V_DPA/irun.lnx8664.14.10.nc/cds.lib
+-HDLVAR
+bdw_work/sims/V_DPA/irun.lnx8664.14.10.nc/hdl.var
+-WORK
+worklib
+-HASXLMODE

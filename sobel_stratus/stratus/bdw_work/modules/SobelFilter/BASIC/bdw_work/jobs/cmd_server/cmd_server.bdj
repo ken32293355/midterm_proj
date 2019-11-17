@@ -1,0 +1,12 @@
+24033
+24035
+ic58.cs.nthu.edu.tw
+-
+3
+0
+0
+1
+1573917286
+1573917336
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/bin/bdw_cmd_shell -dpopt --locallogfile /dev/null -x bdw_server_start
+
