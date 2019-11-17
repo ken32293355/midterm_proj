@@ -146,37 +146,21 @@ void Testbench::feed_rgb() {
 	total_start_time = sc_time_stamp();
   for (y = 0; y != height; ++y) {
     for (x = 0; x != 256; ++x) {
-      adjustX = (MASK_X % 2) ? 1 : 0; // 1
-      adjustY = (MASK_Y % 2) ? 1 : 0; // 1
-      xBound = MASK_X / 2;            // 1
-      yBound = MASK_Y / 2;            // 1
-
-      for (v = -yBound; v != yBound + adjustY; ++v) {   //-1, 0, 1
-        for (u = -xBound; u != xBound + adjustX; ++u) { //-1, 0, 1
-          if (x + u >= 0 && x + u < width && y + v >= 0 && y + v < height) {
-            R = *(source_bitmap +
-                  bytes_per_pixel * (width * (y + v) + (x + u)) + 2);
-            G = *(source_bitmap +
-                  bytes_per_pixel * (width * (y + v) + (x + u)) + 1);
-            B = *(source_bitmap +
-                  bytes_per_pixel * (width * (y + v) + (x + u)) + 0);
-          }
-					else {
-						R = 0;
-						G = 0;
-						B = 0;
-					}
-					sc_dt::sc_uint<24> rgb;
-					rgb.range(7, 0) = R;
-					rgb.range(15, 8) = G;
-					rgb.range(23, 16) = B;
+      R = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 2);
+      G = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 1);
+      B = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 0);
+      sc_dt::sc_uint<24> rgb;
+      rgb.range(7, 0) = R;
+      rgb.range(15, 8) = G;
+      rgb.range(23, 16) = B;
 #ifndef NATIVE_SYSTEMC
-					o_rgb.put(rgb);
+      o_rgb.put(rgb);
 #else
-					o_rgb.write(rgb);
+			o_rgb.write(rgb);
 #endif
-        }
-      }
     }
   }
 }
