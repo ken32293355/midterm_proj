@@ -65,7 +65,7 @@ void SobelFilter::do_filter()
 // read first two rows
 	for (int y = 0; y < 2; y = y + 1)
 	{
-		printf("read %d row", cnt++);
+		// printf("read %d row", cnt++);
 		for (int x = 0; x < 256; x++)
 		{
 

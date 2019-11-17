@@ -145,7 +145,7 @@ void Testbench::feed_rgb() {
 	wait(1);
 	total_start_time = sc_time_stamp();
   for (y = 0; y != height; ++y) {
-    printf("load y row%d\n", y);
+    // printf("load y row%d\n", y);
     for (x = 0; x != 256; ++x) {
       R = *(source_bitmap +
             bytes_per_pixel * (width * y + x) + 2);
@@ -178,8 +178,8 @@ void Testbench::fetch_result() {
 #endif
 	wait(20);
   // for (y = 0; y < height-3; ++y) {
-  for (y = 0; y < height -3; ++y) {
-      printf("fetch %d\n",y);
+  for (y = 0; y < height -2; ++y) {
+      // printf("fetch %d\n",y);
     for (x = 0; x != 256; ++x) {
 
 #ifndef NATIVE_SYSTEMC
