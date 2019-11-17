@@ -50,7 +50,7 @@ void SobelFilter::do_filter()
 	sc_uint<8> batch_g[3][256];
 	sc_uint<8> batch_b[3][256];
 	sc_dt::sc_uint<24> rgb;
-	// int cnt = 0;
+	int cnt = 0;
 	{
 #ifndef NATIVE_SYSTEMC
 		HLS_DEFINE_PROTOCOL("main_reset");
@@ -93,11 +93,9 @@ void SobelFilter::do_filter()
 			newG = 0;
 			newB = 0;
 		}
-
 		// read new rows
 		for (int x = 0; x < 256; x++)
 		{
-
 #ifndef NATIVE_SYSTEMC
 			{
 				rgb = i_rgb.get();
@@ -127,26 +125,25 @@ void SobelFilter::do_filter()
 						newB += batch_b[v + y][x + u] * embossFilterMask[v + yBound][u + xBound];
 					}
 				}
-			}
-			newR = int(min(max(int(newR + bias), 0), 255));
-			newG = int(min(max(int(newG + bias), 0), 255));
-			newB = int(min(max(int(newB + bias), 0), 255));
-
+				newR = int(min(max(int(newR + bias), 0), 255));
+				newG = int(min(max(int(newG + bias), 0), 255));
+				newB = int(min(max(int(newB + bias), 0), 255));
 #ifndef NATIVE_SYSTEMC
-			{
-				HLS_DEFINE_PROTOCOL("output");
-				o_newR.put(newR);
-				o_newG.put(newG);
-				o_newB.put(newB);
-				wait();
-			}
+				{
+					HLS_DEFINE_PROTOCOL("output");
+					o_newR.put(newR);
+					o_newG.put(newG);
+					o_newB.put(newB);
+					wait();
+				}
 #else
-			o_newR.write(newR);
-			o_newG.write(newG);
-			o_newB.write(newB);
+				o_newR.write(newR);
+				o_newG.write(newG);
+				o_newB.write(newB);
 #endif
+			}
 		}
-		
+
 		for (int y = 1; y < 3; y++)
 		{
 			for (int x = 0; x < 256; x++)
