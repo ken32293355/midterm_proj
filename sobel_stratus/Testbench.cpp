@@ -145,7 +145,7 @@ void Testbench::feed_rgb() {
 	wait(1);
 	total_start_time = sc_time_stamp();
   for (y = 0; y != height; ++y) {
-    for (x = 0; x != width; ++x) {
+    for (x = 0; x != 256; ++x) {
       adjustX = (MASK_X % 2) ? 1 : 0; // 1
       adjustY = (MASK_Y % 2) ? 1 : 0; // 1
       xBound = MASK_X / 2;            // 1
@@ -194,7 +194,7 @@ void Testbench::fetch_result() {
 	wait(5);
 	wait(1);
   for (y = 0; y != height; ++y) {
-    for (x = 0; x != width; ++x) {
+    for (x = 0; x != 256; ++x) {
 #ifndef NATIVE_SYSTEMC
 			newR = i_newR.get();
 			newG = i_newG.get();
