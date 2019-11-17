@@ -39,6 +39,13 @@ const sc_int<8> embossFilterMask[MASK_X][MASK_Y] =
     };
 
 
+const sc_int<8> sharpenFilterMask[MASK_X][MASK_Y] =
+{
+	-1, -1, 0,
+	-1, 0, 1,
+	0, 1, 1
+};
+
 // void SobelFilter::do_filter() {
 // 	{
 // #ifndef NATIVE_SYSTEMC
@@ -126,9 +133,9 @@ void SobelFilter::do_filter() {
 #endif
 				{
 					HLS_CONSTRAIN_LATENCY(0, 1, "lat01");
-					newR += rgb.range(7, 0) * embossFilterMask[u][v];
-					newG += rgb.range(15, 8) * embossFilterMask[u][v];
-					newB += rgb.range(23, 16) * embossFilterMask[u][v];
+					newR += rgb.range(7, 0) * sharpenFilterMask[u][v];
+					newG += rgb.range(15, 8) * sharpenFilterMask[u][v];
+					newB += rgb.range(23, 16) * sharpenFilterMask[u][v];
 				}
 			}
 		}
