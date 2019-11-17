@@ -124,6 +124,7 @@ void SobelFilter::do_filter()
 				}
 
 			}
+
 				newR = int(min(max(int(newR + bias), 0), 255));
 				newG = int(min(max(int(newG + bias), 0), 255));
 				newB = int(min(max(int(newB + bias), 0), 255));

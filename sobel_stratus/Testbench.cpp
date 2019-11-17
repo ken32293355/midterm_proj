@@ -121,7 +121,7 @@ int Testbench::write_bmp(string outfile_name) {
 
   // write image
   fwrite(target_bitmap, sizeof(unsigned char),
-         (size_t)(long)width * (height-3) * bytes_per_pixel, fp_t);
+         (size_t)(long)width * (height) * bytes_per_pixel, fp_t);
 
   fclose(fp_t);
   return 0;
