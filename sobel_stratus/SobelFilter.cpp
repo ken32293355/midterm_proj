@@ -122,23 +122,26 @@ void SobelFilter::do_filter()
 						newB += batch_b[v + y][x + u] * embossFilterMask[v + yBound][u + xBound];
 					}
 				}
+
+			}
+			
 				newR = int(min(max(int(newR + bias), 0), 255));
 				newG = int(min(max(int(newG + bias), 0), 255));
 				newB = int(min(max(int(newB + bias), 0), 255));
 #ifndef NATIVE_SYSTEMC
 				{
 					HLS_DEFINE_PROTOCOL("output");
-					// o_newR.put(newR);
-					// o_newG.put(newG);
-					// o_newB.put(newB);
+					o_newR.put(newR);
+					o_newG.put(newG);
+					o_newB.put(newB);
 					wait();
 				}
 #else
-				// o_newR.write(newR);
-				// o_newG.write(newG);
-				// o_newB.write(newB);
+				o_newR.write(newR);
+				o_newG.write(newG);
+				o_newB.write(newB);
 #endif
-			}
+
 		}
 		for (int y = 1; y < 3; y++)
 		{
