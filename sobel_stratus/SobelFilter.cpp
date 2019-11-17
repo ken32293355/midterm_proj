@@ -146,47 +146,7 @@ void SobelFilter::do_filter()
 			o_newB.write(newB);
 #endif
 		}
-		for (unsigned int v = 0; v < MASK_Y; ++v)
-		{
-			for (unsigned int u = 0; u < MASK_X; ++u)
-			{
-				sc_dt::sc_uint<24> rgb;
-#ifndef NATIVE_SYSTEMC
-				{
-					// HLS_DEFINE_PROTOCOL("input");
-					rgb = i_rgb.get();
-					wait();
-				}
-#else
-				rgb = i_rgb.read();
-#endif
-				{
-					HLS_CONSTRAIN_LATENCY(0, 1, "lat01");
-					newR += rgb.range(7, 0) * sharpenFilterMask[u][v];
-					newG += rgb.range(15, 8) * sharpenFilterMask[u][v];
-					newB += rgb.range(23, 16) * sharpenFilterMask[u][v];
-				}
-			}
-		}
-		{
-			HLS_CONSTRAIN_LATENCY(0, 1, "lat01");
-			newR = int(min(max(int(newR + bias), 0), 255));
-			newG = int(min(max(int(newG + bias), 0), 255));
-			newB = int(min(max(int(newB + bias), 0), 255));
-		}
-#ifndef NATIVE_SYSTEMC
-		{
-			HLS_DEFINE_PROTOCOL("output");
-			o_newR.put(newR);
-			o_newG.put(newG);
-			o_newB.put(newB);
-			wait();
-		}
-#else
-		o_newR.write(newR);
-		o_newG.write(newG);
-		o_newB.write(newB);
-#endif
+		
 		for (int y = 1; y < 3; y++)
 		{
 			for (int x = 0; x < 256; x++)
