@@ -178,7 +178,8 @@ void Testbench::fetch_result() {
 #endif
 	wait(5);
 	wait(1);
-  for (y = 0; y < height-1; ++y) {
+  // for (y = 0; y < height-3; ++y) {
+  for (y = 0; y < 200; ++y) {
       printf("fetch %d\n",y);
     for (x = 0; x != 256; ++x) {
 
