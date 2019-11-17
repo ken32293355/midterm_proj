@@ -50,7 +50,7 @@ void SobelFilter::do_filter()
 	sc_uint<8> batch_g[3][256];
 	sc_uint<8> batch_b[3][256];
 	sc_dt::sc_uint<24> rgb;
-	int cnt = 0;
+	// int cnt = 0;
 	{
 #ifndef NATIVE_SYSTEMC
 		HLS_DEFINE_PROTOCOL("main_reset");
