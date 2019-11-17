@@ -181,18 +181,21 @@ void Testbench::fetch_result() {
   for (y = 0; y < height-1; ++y) {
       printf("fetch %d\n",y);
     for (x = 0; x != 256; ++x) {
+
 #ifndef NATIVE_SYSTEMC
 			newR = i_newR.get();
 			newG = i_newG.get();
 			newB = i_newB.get();
+      wait();
 #else
 			newR = i_newR.read();
 			newG = i_newG.read();
 			newB = i_newB.read();
 #endif
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
-        *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
+
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
 	total_run_time = sc_time_stamp() - total_start_time;
