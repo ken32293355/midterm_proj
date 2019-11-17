@@ -128,15 +128,15 @@ void SobelFilter::do_filter()
 #ifndef NATIVE_SYSTEMC
 				{
 					HLS_DEFINE_PROTOCOL("output");
-					o_newR.put(newR);
-					o_newG.put(newG);
-					o_newB.put(newB);
+					// o_newR.put(newR);
+					// o_newG.put(newG);
+					// o_newB.put(newB);
 					wait();
 				}
 #else
-				o_newR.write(newR);
-				o_newG.write(newG);
-				o_newB.write(newB);
+				// o_newR.write(newR);
+				// o_newG.write(newG);
+				// o_newB.write(newB);
 #endif
 			}
 		}
