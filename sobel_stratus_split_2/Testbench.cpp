@@ -216,9 +216,9 @@ void Testbench::feed_rgb1() {
 #ifndef NATIVE_SYSTEMC
 	o_rgb1.reset();
 #endif
-	o_rst.write(false);
+	// o_rst.write(false);
 	wait(5);
-	o_rst.write(true);
+	// o_rst.write(true);
 	wait(1);
 	total_start_time = sc_time_stamp();
   for (y = 0; y != height; ++y) {
