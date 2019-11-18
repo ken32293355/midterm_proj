@@ -148,7 +148,6 @@ void Testbench::feed_rgb0() {
 	wait(1);
 	total_start_time = sc_time_stamp();
   for (y = 0; y != height/2 + 1; ++y) {
-    // printf("load y row%d\n", y);
     for (x = 0; x != 256; ++x) {
       R = *(source_bitmap +
             bytes_per_pixel * (width * y + x) + 2);
@@ -201,7 +200,6 @@ void Testbench::fetch_result0() {
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
-	total_run_time = sc_time_stamp() - total_start_time;
   fetch_result0_finish = true;
 }
 
@@ -221,7 +219,6 @@ void Testbench::feed_rgb1() {
 	wait(5);
 	// o_rst.write(true);
 	wait(1);
-	total_start_time = sc_time_stamp();
   for (y = height / 2 - 2; y != height ; ++y) {
     // printf("load y row%d\n", y);
     for (x = 0; x != 256; ++x) {
@@ -274,9 +271,9 @@ void Testbench::fetch_result1() {
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
-	total_run_time = sc_time_stamp() - total_start_time;
   do {
     wait();
   }  while (fetch_result0_finish == false);
+	total_run_time = sc_time_stamp() - total_start_time;
   sc_stop();
 }
