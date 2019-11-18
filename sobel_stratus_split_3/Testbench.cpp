@@ -205,7 +205,6 @@ void Testbench::fetch_result0() {
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
-	total_run_time = sc_time_stamp() - total_start_time;
   fetch_result0_finish = true;
 }
 
@@ -225,7 +224,6 @@ void Testbench::feed_rgb1() {
 	wait(5);
 	// o_rst.write(true);
 	wait(1);
-	total_start_time = sc_time_stamp();
   for (y = height / 3 - 2; y != height / 3 * 2 +1; ++y) {
     // printf("load y row%d\n", y);
     for (x = 0; x != 256; ++x) {
@@ -280,7 +278,6 @@ void Testbench::fetch_result1() {
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
-	total_run_time = sc_time_stamp() - total_start_time;
   fetch_result1_finish1 = true;
 
 }
@@ -301,7 +298,6 @@ void Testbench::feed_rgb2() {
 	wait(5);
 	// o_rst.write(true);
 	wait(1);
-	total_start_time = sc_time_stamp();
   for (y = height / 3 * 2 - 2; y != height ; ++y) {
     // printf("load y row%d\n", y);
     for (x = 0; x != 256; ++x) {
@@ -354,9 +350,9 @@ void Testbench::fetch_result2() {
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
-	total_run_time = sc_time_stamp() - total_start_time;
   do {
     wait();
   }  while (!fetch_result0_finish|| !fetch_result1_finish);
+	total_run_time = sc_time_stamp() - total_start_time;
   sc_stop();
 }
