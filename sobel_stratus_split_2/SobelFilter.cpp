@@ -16,10 +16,14 @@ SobelFilter::SobelFilter(sc_module_name n) : sc_module(n)
 	reset_signal_is(i_rst, false);
 
 #ifndef NATIVE_SYSTEMC
-	i_rgb.clk_rst(i_clk, i_rst);
-	o_newR.clk_rst(i_clk, i_rst);
-	o_newG.clk_rst(i_clk, i_rst);
-	o_newB.clk_rst(i_clk, i_rst);
+	i_rgb0.clk_rst(i_clk, i_rst);
+	o_newR0.clk_rst(i_clk, i_rst);
+	o_newG0.clk_rst(i_clk, i_rst);
+	o_newB0.clk_rst(i_clk, i_rst);
+	i_rgb1.clk_rst(i_clk, i_rst);
+	o_newR1.clk_rst(i_clk, i_rst);
+	o_newG1.clk_rst(i_clk, i_rst);
+	o_newB1.clk_rst(i_clk, i_rst);
 #endif
 }
 
