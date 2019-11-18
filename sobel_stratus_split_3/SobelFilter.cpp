@@ -31,6 +31,10 @@ SobelFilter::SobelFilter(sc_module_name n) : sc_module(n)
 	o_newR1.clk_rst(i_clk, i_rst);
 	o_newG1.clk_rst(i_clk, i_rst);
 	o_newB1.clk_rst(i_clk, i_rst);
+	i_rgb2.clk_rst(i_clk, i_rst);
+	o_newR2.clk_rst(i_clk, i_rst);
+	o_newG2.clk_rst(i_clk, i_rst);
+	o_newB2.clk_rst(i_clk, i_rst);
 #endif
 }
 
