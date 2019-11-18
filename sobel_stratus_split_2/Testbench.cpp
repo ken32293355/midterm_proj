@@ -139,7 +139,7 @@ void Testbench::feed_rgb() {
 #ifndef NATIVE_SYSTEMC
 	o_rgb0.reset();
 #endif
-	o_rst0.write(false);
+	o_rst.write(false);
 	wait(5);
 	o_rst.write(true);
 	wait(1);
