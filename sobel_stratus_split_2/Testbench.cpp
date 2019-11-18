@@ -25,10 +25,13 @@ unsigned char header[54] = {
 };
 
 Testbench::Testbench(sc_module_name n) : sc_module(n), output_rgb_raw_data_offset(54) {
-  SC_THREAD(feed_rgb);
+  SC_THREAD(feed_rgb0);
   sensitive << i_clk.pos();
-  dont_initialize();
-  SC_THREAD(fetch_result);
+  SC_THREAD(fetch_result0);
+  sensitive << i_clk.pos();
+  SC_THREAD(feed_rgb1);
+  sensitive << i_clk.pos();
+  SC_THREAD(fetch_result1);
   sensitive << i_clk.pos();
   dont_initialize();
 }
@@ -127,7 +130,7 @@ int Testbench::write_bmp(string outfile_name) {
   return 0;
 }
 
-void Testbench::feed_rgb() {
+void Testbench::feed_rgb0() {
   unsigned int x, y, i, v, u; // for loop counter
   unsigned char R, G, B;      // color of R, G, B
   int adjustX, adjustY, xBound, yBound;
@@ -166,7 +169,7 @@ void Testbench::feed_rgb() {
   }
 }
 
-void Testbench::fetch_result() {
+void Testbench::fetch_result0() {
   unsigned int x, y; // for loop counter
   char newR;
   char newG;
@@ -195,6 +198,80 @@ void Testbench::fetch_result() {
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
+    }
+  }
+	total_run_time = sc_time_stamp() - total_start_time;
+  sc_stop();
+}
+
+void Testbench::feed_rgb1() {
+  unsigned int x, y, i, v, u; // for loop counter
+  unsigned char R, G, B;      // color of R, G, B
+  int adjustX, adjustY, xBound, yBound;
+	n_txn = 0;
+	max_txn_time = SC_ZERO_TIME;
+	min_txn_time = SC_ZERO_TIME;
+	total_txn_time = SC_ZERO_TIME;
+
+#ifndef NATIVE_SYSTEMC
+	o_rgb0.reset();
+#endif
+	o_rst.write(false);
+	wait(5);
+	o_rst.write(true);
+	wait(1);
+	total_start_time = sc_time_stamp();
+  for (y = 0; y != height; ++y) {
+    // printf("load y row%d\n", y);
+    for (x = 0; x != 256; ++x) {
+      R = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 2);
+      G = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 1);
+      B = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 0);
+      sc_dt::sc_uint<24> rgb;
+      rgb.range(7, 0) = R;
+      rgb.range(15, 8) = G;
+      rgb.range(23, 16) = B;
+#ifndef NATIVE_SYSTEMC
+      o_rgb0.put(rgb);
+#else
+			o_rgb0.write(rgb);
+#endif
+    }
+  }
+}
+
+void Testbench::fetch_result1() {
+  unsigned int x, y; // for loop counter
+  char newR;
+  char newG;
+  char newB;
+#ifndef NATIVE_SYSTEMC
+	i_newR1.reset();
+	i_newG1.reset();
+	i_newB1.reset();
+#endif
+	wait(20);
+  // for (y = 0; y < height-3; ++y) {
+  for (y = 0; y < height -2; ++y) {
+      // printf("fetch %d\n",y);
+    for (x = 0; x != 256; ++x) {
+
+#ifndef NATIVE_SYSTEMC
+			newR = i_newR1.get();
+			newG = i_newG1.get();
+			newB = i_newB1.get();
+      wait();
+#else
+			newR = i_newR1.read();
+			newG = i_newG1.read();
+			newB = i_newB1.read();
+#endif
+      // *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
+      // *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
+      // *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
 	total_run_time = sc_time_stamp() - total_start_time;
