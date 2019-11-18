@@ -183,7 +183,7 @@ void Testbench::fetch_result0() {
 	wait(20);
   // for (y = 0; y < height-3; ++y) {
   for (y = 0; y != height / 2 - 1; ++y) {
-      // printf("fetch %d\n",y);
+    printf("fetch0 %d\n",y);
     for (x = 0; x != 256; ++x) {
 
 #ifndef NATIVE_SYSTEMC
@@ -256,7 +256,7 @@ void Testbench::fetch_result1() {
 #endif
 	wait(20);
   for (y = height / 2 - 1; y < height -2; ++y) {
-      // printf("fetch %d\n",y);
+      printf("fetch1 %d\n",y);
     for (x = 0; x != 256; ++x) {
 
 #ifndef NATIVE_SYSTEMC
