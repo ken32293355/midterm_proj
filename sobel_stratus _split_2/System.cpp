@@ -6,14 +6,24 @@ System::System( sc_module_name n, string input_bmp, string output_bmp ): sc_modu
 	tb.o_rst(rst);
 	sobel_filter.i_clk(clk);
 	sobel_filter.i_rst(rst);
-	tb.o_rgb(rgb);
-	tb.i_newR(newR);
-	tb.i_newG(newG);
-	tb.i_newB(newB);
-	sobel_filter.i_rgb(rgb);
-	sobel_filter.o_newR(newR);
-	sobel_filter.o_newG(newG);
-	sobel_filter.o_newB(newB);
+	tb.o_rgb0(rgb0);
+	tb.i_newR0(newR0);
+	tb.i_newG0(newG0);
+	tb.i_newB0(newB0);
+	sobel_filter.i_rgb0(rgb0);
+	sobel_filter.o_newR0(newR0);
+	sobel_filter.o_newG0(newG0);
+	sobel_filter.o_newB0(newB0);
+	tb.o_rgb1(rgb1);
+	tb.i_newR1(newR1);
+	tb.i_newG1(newG1);
+	tb.i_newB1(newB1);
+	sobel_filter.i_rgb1(rgb1);
+	sobel_filter.o_newR1(newR1);
+	sobel_filter.o_newG1(newG1);
+	sobel_filter.o_newB1(newB1);
+
+
 	tb.read_bmp(input_bmp);
 }
 

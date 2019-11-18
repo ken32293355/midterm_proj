@@ -137,9 +137,9 @@ void Testbench::feed_rgb() {
 	total_txn_time = SC_ZERO_TIME;
 
 #ifndef NATIVE_SYSTEMC
-	o_rgb.reset();
+	o_rgb0.reset();
 #endif
-	o_rst.write(false);
+	o_rst0.write(false);
 	wait(5);
 	o_rst.write(true);
 	wait(1);
@@ -158,9 +158,9 @@ void Testbench::feed_rgb() {
       rgb.range(15, 8) = G;
       rgb.range(23, 16) = B;
 #ifndef NATIVE_SYSTEMC
-      o_rgb.put(rgb);
+      o_rgb0.put(rgb);
 #else
-			o_rgb.write(rgb);
+			o_rgb0.write(rgb);
 #endif
     }
   }
@@ -172,9 +172,9 @@ void Testbench::fetch_result() {
   char newG;
   char newB;
 #ifndef NATIVE_SYSTEMC
-	i_newR.reset();
-	i_newG.reset();
-	i_newB.reset();
+	i_newR0.reset();
+	i_newG0.reset();
+	i_newB0.reset();
 #endif
 	wait(20);
   // for (y = 0; y < height-3; ++y) {
@@ -183,14 +183,14 @@ void Testbench::fetch_result() {
     for (x = 0; x != 256; ++x) {
 
 #ifndef NATIVE_SYSTEMC
-			newR = i_newR.get();
-			newG = i_newG.get();
-			newB = i_newB.get();
+			newR = i_newR0.get();
+			newG = i_newG0.get();
+			newB = i_newB0.get();
       wait();
 #else
-			newR = i_newR.read();
-			newG = i_newG.read();
-			newB = i_newB.read();
+			newR = i_newR0.read();
+			newG = i_newG0.read();
+			newB = i_newB0.read();
 #endif
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;

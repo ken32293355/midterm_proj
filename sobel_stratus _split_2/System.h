@@ -26,15 +26,23 @@ private:
 	sc_clock clk;
 	sc_signal<bool> rst;
 #ifndef NATIVE_SYSTEMC
-	cynw_p2p< sc_dt::sc_uint<24> > rgb;
-	cynw_p2p< sc_dt::sc_uint<8> > newR;
-	cynw_p2p< sc_dt::sc_uint<8> > newG;
-	cynw_p2p< sc_dt::sc_uint<8> > newB;
+	cynw_p2p< sc_dt::sc_uint<24> > rgb1;
+	cynw_p2p< sc_dt::sc_uint<8> > newR1;
+	cynw_p2p< sc_dt::sc_uint<8> > newG1;
+	cynw_p2p< sc_dt::sc_uint<8> > newB1;
+	cynw_p2p< sc_dt::sc_uint<24> > rgb0;
+	cynw_p2p< sc_dt::sc_uint<8> > newR0;
+	cynw_p2p< sc_dt::sc_uint<8> > newG0;
+	cynw_p2p< sc_dt::sc_uint<8> > newB0;
 #else
-	sc_fifo< sc_dt::sc_uint<24> > rgb;
-	sc_fifo< sc_dt::sc_uint<8> > newR;
-	sc_fifo< sc_dt::sc_uint<8> > newG;
-	sc_fifo< sc_dt::sc_uint<8> > newB;
+	sc_fifo< sc_dt::sc_uint<24> > rgb0;
+	sc_fifo< sc_dt::sc_uint<8> > newR0;
+	sc_fifo< sc_dt::sc_uint<8> > newG0;
+	sc_fifo< sc_dt::sc_uint<8> > newB0;
+	sc_fifo< sc_dt::sc_uint<24> > rgb1;
+	sc_fifo< sc_dt::sc_uint<8> > newR1;
+	sc_fifo< sc_dt::sc_uint<8> > newG1;
+	sc_fifo< sc_dt::sc_uint<8> > newB1;
 #endif
 
 	std::string _output_bmp;

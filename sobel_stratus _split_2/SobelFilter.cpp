@@ -55,10 +55,10 @@ void SobelFilter::do_filter()
 	{
 #ifndef NATIVE_SYSTEMC
 		HLS_DEFINE_PROTOCOL("main_reset");
-		i_rgb.reset();
-		o_newR.reset();
-		o_newG.reset();
-		o_newB.reset();
+		i_rgb0.reset();
+		o_newR0.reset();
+		o_newG0.reset();
+		o_newB0.reset();
 #endif
 		wait();
 	}
@@ -71,7 +71,7 @@ void SobelFilter::do_filter()
 
 #ifndef NATIVE_SYSTEMC
 			{
-				rgb = i_rgb.get();
+				rgb = i_rgb0.get();
 				wait();
 			}
 #else
@@ -96,11 +96,11 @@ void SobelFilter::do_filter()
 
 #ifndef NATIVE_SYSTEMC
 			{
-				rgb = i_rgb.get();
+				rgb = i_rgb0.get();
 				wait();
 			}
 #else
-			rgb = i_rgb.read();
+			rgb = i_rgb0.read();
 #endif
 			batch_r[2][x] = rgb.range(7, 0);
 			batch_g[2][x] = rgb.range(15, 8);
@@ -132,15 +132,15 @@ void SobelFilter::do_filter()
 #ifndef NATIVE_SYSTEMC
 				{
 					HLS_DEFINE_PROTOCOL("output");
-					o_newR.put(newR);
-					o_newG.put(newG);
-					o_newB.put(newB);
+					o_newR0.put(newR);
+					o_newG0.put(newG);
+					o_newB0.put(newB);
 					wait();
 				}
 #else
-				o_newR.write(newR);
-				o_newG.write(newG);
-				o_newB.write(newB);
+				o_newR0.write(newR);
+				o_newG0.write(newG);
+				o_newB0.write(newB);
 #endif
 
 		}
