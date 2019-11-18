@@ -1,0 +1,80 @@
+irun(64): 14.10-s005: (c) Copyright 1995-2014 Cadence Design Systems, Inc.
+TOOL:	irun(64)	14.10-s005: Started on Nov 16, 2019 at 23:15:47 CST
+irun
+	+nc64bit
+	+incdir+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/lib
+	+incdir+bdw_work/wrappers
+	+access+rw
+	+loadpli1=/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/lib/64bit/ncvlog_ssl:ssl_bootstrap
+	-f bdw_work/sims/V_BASIC/siminfo
+		bdw_work/sims/top_V_BASIC.v
+		bdw_work/wrappers/SobelFilter_cosim.v
+		bdw_work/modules/SobelFilter/BASIC/SobelFilter_rtl.v
+		bdw_work/modules/SobelFilter/BASIC/v_rtl/SobelFilter_ROM_9X8_embossFilterMask.v
+	+ncinput+bdw_work/sims/V_BASIC/ncverilog.do
+	+nclibdirname+bdw_work/sims/V_BASIC
+	+libext+.v
+	+define+ioConfig
+	+define+BDW_RTL_SobelFilter_BASIC
+	+nowarn+LIBNOU
+	+hubSetOption+libdef=bdw_work/sims/V_BASIC/sim_V_BASIC.so,argv=../lena_std_short.bmp%out.bmp
+	+hubSetOption+bdr=bdw_work/sims/V_BASIC/sim.bdr
+	-l bdw_work/sims/V_BASIC/bdw_sim_verilog.log
+
+   User defined plus("+") options:
+	+hubSetOption+libdef=bdw_work/sims/V_BASIC/sim_V_BASIC.so,argv=../lena_std_short.bmp%out.bmp
+	+hubSetOption+bdr=bdw_work/sims/V_BASIC/sim.bdr
+
+file: bdw_work/sims/top_V_BASIC.v
+	module worklib.top:v
+		errors: 0, warnings: 0
+file: bdw_work/wrappers/SobelFilter_cosim.v
+	module worklib.SobelFilter_cosim:v
+		errors: 0, warnings: 0
+file: bdw_work/modules/SobelFilter/BASIC/SobelFilter_rtl.v
+	module worklib.SobelFilter:v
+		errors: 0, warnings: 0
+file: bdw_work/modules/SobelFilter/BASIC/v_rtl/SobelFilter_ROM_9X8_embossFilterMask.v
+	module worklib.SobelFilter_ROM_9X8_embossFilterMask:v
+		errors: 0, warnings: 0
+*** Registering Hub PLI1.0 Interface***
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		top
+	Building instance overlay tables: ....................
+            $readmemh("bdw_work/modules/SobelFilter/BASIC/SobelFilter_ROM_9X8_embossFilterMask_0.memh", embossFilterMask);
+                                                                                                                       |
+ncelab: *W,MEMODR (./bdw_work/modules/SobelFilter/BASIC/v_rtl/SobelFilter_ROM_9X8_embossFilterMask.v,17|119): $readmem default memory order incompatible with IEEE1364.
+ Done
+	Generating native compiled code:
+		worklib.SobelFilter:v <0x49370873>
+			streams:  82, words: 28606
+		worklib.SobelFilter_ROM_9X8_embossFilterMask:v <0x1d851219>
+			streams:   3, words:   957
+		worklib.top:v <0x6aec15ac>
+			streams: 124, words: 120966
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 4       4
+		Registers:             185     185
+		Scalar wires:           32       -
+		Vectored wires:         16       -
+		Always blocks:          59      59
+		Initial blocks:         10      10
+		Cont. assignments:      26      37
+		Pseudo assignments:      7       7
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.top:v
+Loading snapshot worklib.top:v .................... Done
+*** Registering Hub PLI1.0 Interface***
+ncsim> source /usr/cad/cadence/INCISIV/cur/tools/inca/files/ncsimrc
+ncsim> 
+ncsim> run
+NOTE: Cadence Design Systems Hub Simulation Platform : version 17.21-s100
+Simulation stopped via $stop(1) at time 26869815100 PS + 0
+./bdw_work/sims/top_V_BASIC.v:69 		#100 $stop;
+ncsim> quit
+TOOL:	irun(64)	14.10-s005: Exiting on Nov 16, 2019 at 23:18:27 CST  (total: 00:02:40)

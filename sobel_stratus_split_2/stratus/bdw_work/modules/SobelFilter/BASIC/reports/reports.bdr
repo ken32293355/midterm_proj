@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<report_catalogue>
+	<report_file>
+		<report_def>
+			<name>scheduler</name>
+			<summary>Reports all of the operations scheduled in each thread.</summary>
+			<unprintable/>
+			<node_kind>hls_config</node_kind>
+		</report_def>
+		<name>scheduler</name>
+		<object>hls_config:stratus/SobelFilter/BASIC</object>
+		<silent/>
+		<time>Sat Nov 16 23:15:37 2019</time>
+		<hostname>ic58.cs.nthu.edu.tw</hostname>
+		<user>mc03</user>
+		<version>17.21-s100</version>
+	</report_file>
+</report_catalogue>

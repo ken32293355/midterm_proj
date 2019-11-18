@@ -1,0 +1,12 @@
+10178
+10195
+ic58.cs.nthu.edu.tw
+bdw_work/trace/sim.V_DPA.trace
+2
+0
+0
+0
+1573956823
+1573956989
+make --no-print-directory -f Makefile CWBExec=1 sim_V_DPA
+

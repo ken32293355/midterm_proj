@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<tool_log>
+	<tool_kind>LogicSimulator</tool_kind>
+	<tool_name>NC Verilog</tool_name>
+	<hostname>ic58.cs.nthu.edu.tw</hostname>
+	<uname>Linux 2.6.32-754.23.1.el6.x86_64 x86_64</uname>
+	<cwd>/users/course/2019F/ee64700/mc03/ee6470-hw6/sobel_stratus/stratus</cwd>
+	<user>mc03</user>
+	<gen_time>Sun Nov 17 10:14:44 2019</gen_time>
+	<module_inst>
+		<module_name>SobelFilter</module_name>
+		<inst_path>sys.sobel_filter</inst_path>
+		<representation>RTL_V</representation>
+	</module_inst>
+	<end_time>Sun Nov 17 10:16:28 2019</end_time>
+	<passed>1</passed>
+</tool_log>
