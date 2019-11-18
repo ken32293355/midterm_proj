@@ -174,6 +174,7 @@ void Testbench::fetch_result0() {
   char newR;
   char newG;
   char newB;
+  fetch_result0_finish = false;
 #ifndef NATIVE_SYSTEMC
 	i_newR0.reset();
 	i_newG0.reset();
@@ -201,7 +202,7 @@ void Testbench::fetch_result0() {
     }
   }
 	total_run_time = sc_time_stamp() - total_start_time;
-  sc_stop();
+  fetch_result0_finish = true;
 }
 
 void Testbench::feed_rgb1() {
@@ -275,5 +276,8 @@ void Testbench::fetch_result1() {
     }
   }
 	total_run_time = sc_time_stamp() - total_start_time;
+  do {
+    wait();
+  }  while (fetch_result0_finish == false);
   sc_stop();
 }

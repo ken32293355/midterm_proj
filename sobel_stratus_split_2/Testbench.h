@@ -83,5 +83,6 @@ private:
 	void fetch_result0();
 	void feed_rgb1();
 	void fetch_result1();
+	bool fetch_result0_finish;
 };
 #endif
