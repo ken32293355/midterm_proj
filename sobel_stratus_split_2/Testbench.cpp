@@ -182,7 +182,7 @@ void Testbench::fetch_result0() {
 #endif
 	wait(20);
   // for (y = 0; y < height-3; ++y) {
-  for (y = 0; y < height/2  - 2; ++y) {
+  for (y = 0; y != height / 2 - 1; ++y) {
       // printf("fetch %d\n",y);
     for (x = 0; x != 256; ++x) {
 
@@ -255,7 +255,6 @@ void Testbench::fetch_result1() {
 	i_newB1.reset();
 #endif
 	wait(20);
-  // for (y = 0; y < height-3; ++y) {
   for (y = height / 2 - 1; y < height -2; ++y) {
       // printf("fetch %d\n",y);
     for (x = 0; x != 256; ++x) {
