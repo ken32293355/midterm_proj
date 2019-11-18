@@ -12,15 +12,14 @@ SobelFilter::SobelFilter(sc_module_name n) : sc_module(n)
 #endif
 	SC_THREAD(do_filter0);
 	sensitive << i_clk.pos();
-	dont_initialize();
 	reset_signal_is(i_rst, false);
 	SC_THREAD(do_filter1);
 	sensitive << i_clk.pos();
-	dont_initialize();
+	reset_signal_is(i_rst, false);
 	SC_THREAD(do_filter2);
 	sensitive << i_clk.pos();
-	dont_initialize();
 	reset_signal_is(i_rst, false);
+	dont_initialize();
 
 #ifndef NATIVE_SYSTEMC
 	i_rgb0.clk_rst(i_clk, i_rst);
