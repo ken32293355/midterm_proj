@@ -214,7 +214,7 @@ void Testbench::feed_rgb1() {
 	total_txn_time = SC_ZERO_TIME;
 
 #ifndef NATIVE_SYSTEMC
-	o_rgb0.reset();
+	o_rgb1.reset();
 #endif
 	o_rst.write(false);
 	wait(5);
@@ -235,9 +235,9 @@ void Testbench::feed_rgb1() {
       rgb.range(15, 8) = G;
       rgb.range(23, 16) = B;
 #ifndef NATIVE_SYSTEMC
-      o_rgb0.put(rgb);
+      o_rgb1.put(rgb);
 #else
-			o_rgb0.write(rgb);
+			o_rgb1.write(rgb);
 #endif
     }
   }
