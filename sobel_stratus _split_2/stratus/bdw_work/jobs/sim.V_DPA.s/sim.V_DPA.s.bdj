@@ -1,0 +1,12 @@
+11180
+11198
+ic58.cs.nthu.edu.tw
+bdw_work/trace/sim.V_DPA.s.trace
+2
+0
+0
+0
+1573956882
+1573956988
+/tools/linux/cadence/STRATUS/cur/bin/hub_ncverilog -f bdw_work/sims/V_DPA/siminfo +ncinput+bdw_work/sims/V_DPA/ncverilog.do +nclibdirname+bdw_work/sims/V_DPA +libext+.v +define+ioConfig +define+BDW_RTL_SobelFilter_DPA +nowarn+LIBNOU +hubSetOption+libdef=bdw_work/sims/V_DPA/sim_V_DPA.so,argv=../lena_std_short.bmp%out.bmp +hubSetOption+bdr=bdw_work/sims/V_DPA/sim.bdr -l bdw_work/sims/V_DPA/bdw_sim_verilog.log
+

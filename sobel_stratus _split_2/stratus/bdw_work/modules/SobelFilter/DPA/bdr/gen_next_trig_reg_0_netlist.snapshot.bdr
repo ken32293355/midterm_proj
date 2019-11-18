@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<netlist>
+	<module_name>gen_next_trig_reg_0</module_name>
+	<signal>
+		<name>MUX_N14</name>
+		<async/>
+	</signal>
+	<thread>
+		<name>MUX_N14</name>
+		<async/>
+		<lhs>
+			<name>MUX_N14</name>
+		</lhs>
+		<rhs>
+			<name>o_newR_m_req_m_trig_req</name>
+		</rhs>
+		<mux_area>0.0000</mux_area>
+		<mux_delay>0.0000</mux_delay>
+		<control_delay>0.0000</control_delay>
+	</thread>
+	<signal>
+		<name>SobelFilter_Not_1U_1_4_3_out1</name>
+		<source_loc>11872</source_loc>
+		<async/>
+	</signal>
+	<module_inst>
+		<name>SobelFilter_Not_1U_1_4</name>
+		<instance_name>SobelFilter_Not_1U_1_4_3</instance_name>
+		<port_conn>in1,MUX_N14</port_conn>
+		<port_conn>out1,SobelFilter_Not_1U_1_4_3_out1</port_conn>
+		<source_loc>6147</source_loc>
+	</module_inst>
+</netlist>

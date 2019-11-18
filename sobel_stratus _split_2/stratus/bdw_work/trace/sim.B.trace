@@ -1,0 +1,42 @@
+Generating dependencies for ../System.cpp
+Generating dependencies for ../Testbench.cpp
+Generating dependencies for ../main.cpp
+make[2]: Warning: File `bdw_work/objs/main.d' has modification time 0.01 s in the future
+/tools/linux/cadence/STRATUS/cur/bin/bdw_shell /tools/linux/cadence/STRATUS/cur/share/stratus/tcl/bdw_siminfo.tcl project.tcl B
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -o bdw_work/objs/main.o -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 ../main.cpp
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -o bdw_work/objs/Testbench.o -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 ../Testbench.cpp
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -o bdw_work/objs/System.o -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 ../System.cpp
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -TP -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 -o bdw_work/libesc/esc_utils.o /tools/linux/cadence/STRATUS/cur/share/stratus/source/esc_utils.cc
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -TP -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 -o bdw_work/libesc/esc_hub.o /tools/linux/cadence/STRATUS/cur/share/stratus/source/esc_hub.cc
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -TP -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 -o bdw_work/libesc/esc_cosim.o /tools/linux/cadence/STRATUS/cur/share/stratus/source/esc_cosim.cc
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -TP -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 -o bdw_work/libesc/esc_type.o /tools/linux/cadence/STRATUS/cur/share/stratus/source/esc_type.cc
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -TP -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 -o bdw_work/libesc/esc_elab.o /tools/linux/cadence/STRATUS/cur/share/stratus/source/esc_elab.cc
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -TP -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 -o bdw_work/libesc/esc_cleanup.o /tools/linux/cadence/STRATUS/cur/share/stratus/source/esc_cleanup.cc
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -TP -I./ -Ibdw_work/wrappers   -I.. -c -DCLOCK_PERIOD=10.0 -g   -fPIC  -I/tools/linux/cadence/STRATUS/cur/share/stratus/include -I/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/include  -DBDW_HUB=1    -DBDW_USE_SCV=0 -o bdw_work/libesc/esc_watcher.o /tools/linux/cadence/STRATUS/cur/share/stratus/source/esc_watcher.cc
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.1/bin/ar r  bdw_work/libesc/libesc.a bdw_work/libesc/esc_utils.o bdw_work/libesc/esc_hub.o bdw_work/libesc/esc_cosim.o bdw_work/libesc/esc_type.o bdw_work/libesc/esc_elab.o bdw_work/libesc/esc_cleanup.o bdw_work/libesc/esc_watcher.o
+ar: creating bdw_work/libesc/libesc.a
+/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/gcc/4.8/bin/g++ -Wl,--export-dynamic   \
+        -Wl,-rpath,/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/lib/64bit \
+        -Wl,-rpath,/tools/linux/cadence/STRATUS/cur/tools.lnx86/lib/64bit \
+        -Wl,-rpath,/tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/lib-linux64 \
+		-o bdw_work/sims/B/sim_B \
+		bdw_work/objs/SobelFilter.o bdw_work/objs/main.o bdw_work/objs/Testbench.o bdw_work/objs/System.o \
+		 \
+		 \
+        bdw_work/libesc/libesc.a \
+		 \
+		-L /tools/linux/cadence/STRATUS/cur/tools.lnx86/lib/64bit -L /tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/lib/64bit  -L /tools/linux/cadence/STRATUS/cur/tools.lnx86/stratus/systemc/2.3/lib-linux64 -lscv -lsystemc  -lhubexec -lhub  -lbdw_st 
+Executing simulation: bdw_work/sims/B/sim_B  ../lena_std_short.bmp out.bmp
+
+
+             SystemC 2.3.0-ASI --- Feb  9 2017 16:02:52
+        Copyright (c) 1996-2012 by all Contributors,
+        ALL RIGHTS RESERVED
+
+NOTE: Cadence Design Systems Hub Simulation Platform : version 17.21-s100
+
+Info: /OSCI/SystemC: Simulation stopped by user.
+Total run time = 14417910 ns
+Simulated time == 14417970 ns
+BDW_SIM_CONFIG_DIR=bdw_work/sims/B make saySimPassed 2>&1 | tee -a bdw_work/sims/B/bdw_sim.log

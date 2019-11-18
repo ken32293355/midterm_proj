@@ -1,0 +1,12 @@
+20210
+20227
+ic58.cs.nthu.edu.tw
+bdw_work/trace/sim.B.trace
+2
+0
+0
+0
+1573915044
+1573915075
+make --no-print-directory -f Makefile CWBExec=1 sim_B
+
