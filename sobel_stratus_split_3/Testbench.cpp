@@ -278,7 +278,7 @@ void Testbench::fetch_result1() {
       *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
-  fetch_result1_finish1 = true;
+  fetch_result1_finish = true;
 
 }
 
