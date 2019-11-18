@@ -222,7 +222,7 @@ void Testbench::feed_rgb1() {
 	// o_rst.write(true);
 	wait(1);
 	total_start_time = sc_time_stamp();
-  for (y = 0; y != height; ++y) {
+  for (y = height / 2 - 2; y != height / 2 - 1; ++y) {
     // printf("load y row%d\n", y);
     for (x = 0; x != 256; ++x) {
       R = *(source_bitmap +
@@ -256,7 +256,7 @@ void Testbench::fetch_result1() {
 #endif
 	wait(20);
   // for (y = 0; y < height-3; ++y) {
-  for (y = 0; y < height -2; ++y) {
+  for (y = height / 2 - 1; y < height -2; ++y) {
       // printf("fetch %d\n",y);
     for (x = 0; x != 256; ++x) {
 
@@ -270,9 +270,9 @@ void Testbench::fetch_result1() {
 			newG = i_newG1.read();
 			newB = i_newB1.read();
 #endif
-      // *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
-      // *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
-      // *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
     }
   }
 	total_run_time = sc_time_stamp() - total_start_time;
