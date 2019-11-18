@@ -25,21 +25,29 @@ public:
 #ifndef NATIVE_SYSTEMC
 	cynw_p2p<sc_dt::sc_uint<24> >::base_out o_rgb0;
 	cynw_p2p<sc_dt::sc_uint<24> >::base_out o_rgb1;
+	cynw_p2p<sc_dt::sc_uint<24> >::base_out o_rgb2;
 	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newR0;
 	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newG0;
 	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newB0;
 	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newR1;
 	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newG1;
 	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newB1;
+	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newR2;
+	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newG2;
+	cynw_p2p<sc_dt::sc_uint<8> >::base_in i_newB2;
 #else
 	sc_fifo_out<sc_dt::sc_uint<24> > o_rgb0;
 	sc_fifo_out<sc_dt::sc_uint<24> > o_rgb1;
+	sc_fifo_out<sc_dt::sc_uint<24> > o_rgb2;
 	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newR0;
 	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newG0;
 	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newB0;
 	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newR1;
 	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newG1;
 	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newB1;
+	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newR2;
+	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newG2;
+	sc_fifo_in<sc_dt::sc_uint<32> >::base_in i_newB2;
 #endif
 
 	SC_HAS_PROCESS(Testbench);
@@ -83,6 +91,9 @@ private:
 	void fetch_result0();
 	void feed_rgb1();
 	void fetch_result1();
+	void feed_rgb2();
+	void fetch_result2();
 	bool fetch_result0_finish;
+	bool fetch_result1_finish;
 };
 #endif

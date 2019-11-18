@@ -26,6 +26,10 @@ private:
 	sc_clock clk;
 	sc_signal<bool> rst;
 #ifndef NATIVE_SYSTEMC
+	cynw_p2p< sc_dt::sc_uint<24> > rgb2;
+	cynw_p2p< sc_dt::sc_uint<8> > newR2;
+	cynw_p2p< sc_dt::sc_uint<8> > newG2;
+	cynw_p2p< sc_dt::sc_uint<8> > newB2;
 	cynw_p2p< sc_dt::sc_uint<24> > rgb1;
 	cynw_p2p< sc_dt::sc_uint<8> > newR1;
 	cynw_p2p< sc_dt::sc_uint<8> > newG1;
@@ -43,6 +47,10 @@ private:
 	sc_fifo< sc_dt::sc_uint<8> > newR1;
 	sc_fifo< sc_dt::sc_uint<8> > newG1;
 	sc_fifo< sc_dt::sc_uint<8> > newB1;
+	sc_fifo< sc_dt::sc_uint<24> > rgb2;
+	sc_fifo< sc_dt::sc_uint<8> > newR2;
+	sc_fifo< sc_dt::sc_uint<8> > newG2;
+	sc_fifo< sc_dt::sc_uint<8> > newB2;
 #endif
 
 	std::string _output_bmp;

@@ -33,6 +33,10 @@ Testbench::Testbench(sc_module_name n) : sc_module(n), output_rgb_raw_data_offse
   sensitive << i_clk.pos();
   SC_THREAD(fetch_result1);
   sensitive << i_clk.pos();
+  SC_THREAD(fetch_result2);
+  sensitive << i_clk.pos();
+  SC_THREAD(feed_rgb2);
+  sensitive << i_clk.pos();
   dont_initialize();
 }
 
@@ -147,7 +151,7 @@ void Testbench::feed_rgb0() {
 	o_rst.write(true);
 	wait(1);
 	total_start_time = sc_time_stamp();
-  for (y = 0; y != height/2 + 1; ++y) {
+  for (y = 0; y != height/3 + 1; ++y) {
     // printf("load y row%d\n", y);
     for (x = 0; x != 256; ++x) {
       R = *(source_bitmap +
@@ -182,7 +186,7 @@ void Testbench::fetch_result0() {
 #endif
 	wait(20);
   // for (y = 0; y < height-3; ++y) {
-  for (y = 0; y != height / 2 - 1; ++y) {
+  for (y = 0; y != height / 3 - 1; ++y) {
     // printf("fetch0 %d\n",y);
     for (x = 0; x != 256; ++x) {
 
@@ -222,7 +226,7 @@ void Testbench::feed_rgb1() {
 	// o_rst.write(true);
 	wait(1);
 	total_start_time = sc_time_stamp();
-  for (y = height / 2 - 2; y != height ; ++y) {
+  for (y = height / 3 - 2; y != height / 3 * 2 +1; ++y) {
     // printf("load y row%d\n", y);
     for (x = 0; x != 256; ++x) {
       R = *(source_bitmap +
@@ -249,13 +253,15 @@ void Testbench::fetch_result1() {
   char newR;
   char newG;
   char newB;
+  fetch_result1_finish = false;
+
 #ifndef NATIVE_SYSTEMC
 	i_newR1.reset();
 	i_newG1.reset();
 	i_newB1.reset();
 #endif
 	wait(20);
-  for (y = height / 2 - 1; y < height -2; ++y) {
+  for (y = height / 3 - 1; y < height/3*2 -1; ++y) {
       // printf("fetch1 %d\n",y);
     for (x = 0; x != 256; ++x) {
 
@@ -275,8 +281,82 @@ void Testbench::fetch_result1() {
     }
   }
 	total_run_time = sc_time_stamp() - total_start_time;
+  fetch_result1_finish1 = true;
+
+}
+
+void Testbench::feed_rgb2() {
+  unsigned int x, y, i, v, u; // for loop counter
+  unsigned char R, G, B;      // color of R, G, B
+  int adjustX, adjustY, xBound, yBound;
+	n_txn = 0;
+	max_txn_time = SC_ZERO_TIME;
+	min_txn_time = SC_ZERO_TIME;
+	total_txn_time = SC_ZERO_TIME;
+
+#ifndef NATIVE_SYSTEMC
+	o_rgb2.reset();
+#endif
+	// o_rst.write(false);
+	wait(5);
+	// o_rst.write(true);
+	wait(1);
+	total_start_time = sc_time_stamp();
+  for (y = height / 3 * 2 - 2; y != height ; ++y) {
+    // printf("load y row%d\n", y);
+    for (x = 0; x != 256; ++x) {
+      R = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 2);
+      G = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 1);
+      B = *(source_bitmap +
+            bytes_per_pixel * (width * y + x) + 0);
+      sc_dt::sc_uint<24> rgb;
+      rgb.range(7, 0) = R;
+      rgb.range(15, 8) = G;
+      rgb.range(23, 16) = B;
+#ifndef NATIVE_SYSTEMC
+      o_rgb2.put(rgb);
+#else
+			o_rgb2.write(rgb);
+#endif
+    }
+  }
+
+}
+
+void Testbench::fetch_result2() {
+  unsigned int x, y; // for loop counter
+  char newR;
+  char newG;
+  char newB;
+#ifndef NATIVE_SYSTEMC
+	i_newR2.reset();
+	i_newG2.reset();
+	i_newB2.reset();
+#endif
+	wait(20);
+  for (y = height/3*2 -1; y < height -2; ++y) {
+    for (x = 0; x != 256; ++x) {
+
+#ifndef NATIVE_SYSTEMC
+			newR = i_newR2.get();
+			newG = i_newG2.get();
+			newB = i_newB2.get();
+      wait();
+#else
+			newR = i_newR2.read();
+			newG = i_newG2.read();
+			newB = i_newB2.read();
+#endif
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
+      *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
+    }
+  }
+	total_run_time = sc_time_stamp() - total_start_time;
   do {
     wait();
-  }  while (fetch_result0_finish == false);
+  }  while (!fetch_result0_finish|| !fetch_result1_finish);
   sc_stop();
 }
