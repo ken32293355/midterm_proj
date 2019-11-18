@@ -26,18 +26,19 @@ public:
 #else
 	sc_fifo_in< sc_dt::sc_uint<24> > i_rgb0;
 	sc_fifo_out< sc_dt::sc_uint<8> > o_newR0;
-	sc_fifo_out< sc_dt::sc_uint<32> > o_newG0;
-	sc_fifo_out< sc_dt::sc_uint<32> > o_newB0;
+	sc_fifo_out< sc_dt::sc_uint<8> > o_newG0;
+	sc_fifo_out< sc_dt::sc_uint<8> > o_newB0;
 	sc_fifo_in< sc_dt::sc_uint<24> > i_rgb1;
 	sc_fifo_out< sc_dt::sc_uint<8> > o_newR1;
-	sc_fifo_out< sc_dt::sc_uint<32> > o_newG1;
-	sc_fifo_out< sc_dt::sc_uint<32> > o_newB1;
+	sc_fifo_out< sc_dt::sc_uint<8> > o_newG1;
+	sc_fifo_out< sc_dt::sc_uint<8> > o_newB1;
 #endif
 	SC_HAS_PROCESS( SobelFilter );
 	SobelFilter( sc_module_name n );
 	~SobelFilter();
 private:
-	void do_filter();
+	void do_filter0();
+	void do_filter1();
   int val[MASK_N];
 };
 #endif
